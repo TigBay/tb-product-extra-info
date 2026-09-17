@@ -1,0 +1,32 @@
+<sw-card
+        title="Produkt-Zusatzinfo"
+        :is-loading="isLoading"
+>
+    <mt-textarea
+            v-if="extraInfo"
+            v-model="extraInfo.extraText"
+            label="Zusatztext"
+            placeholder="Zum Beispiel Liefer-, Material- oder Verfügbarkeitshinweise"
+            :disabled="disabled || isSaving"
+    />
+
+    <mt-number-field
+            v-if="extraInfo"
+            v-model="extraInfo.priority"
+            label="Priorität"
+            :min="0"
+            :step="1"
+            :disabled="disabled || isSaving"
+    />
+
+    <template #footer>
+        <mt-button
+                variant="primary"
+                :disabled="disabled || !extraInfo"
+                :is-loading="isSaving"
+                @click="saveExtraInfo"
+        >
+            Zusatzinfo speichern
+        </mt-button>
+    </template>
+</sw-card>

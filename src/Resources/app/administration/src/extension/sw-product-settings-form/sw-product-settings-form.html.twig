@@ -1,0 +1,9 @@
+{% block sw_product_settings_form_content %}
+    {% parent %}
+
+    <tb-product-extra-info
+            v-if="product && product.id"
+            :product-id="product.id"
+            :disabled="!allowEdit"
+    />
+{% endblock %}

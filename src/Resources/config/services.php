@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-
-use function Symfony\Component\DependencyInjection\Loader\Configurator\service;
+use Tb\Core\Content\Product\ProductExtension;
+use Tb\Core\Content\ProductExtraInfo\ProductExtraInfoDefinition;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $services = $containerConfigurator->services();
@@ -17,8 +17,12 @@ return static function (ContainerConfigurator $containerConfigurator): void {
         ->exclude('../../{Resources,Migration,*.php}');
 
     $services
-        ->set(\Tb\Core\Content\ProductExtraInfo\ProductExtraInfoDefinition::class)
+        ->set(ProductExtraInfoDefinition::class)
         ->tag('shopware.entity.definition', [
             'entity' => 'product_extra_info',
         ]);
+
+    $services
+        ->set(ProductExtension::class)
+        ->tag('shopware.entity.extension');
 };

@@ -2,6 +2,7 @@
 
 namespace Tb\Core\Content\ProductExtraInfo;
 
+use Shopware\Core\Content\Product\ProductEntity;
 use Shopware\Core\Framework\DataAbstractionLayer\Entity;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityIdTrait;
 
@@ -10,6 +11,8 @@ class ProductExtraInfoEntity extends Entity
     use EntityIdTrait;
 
     protected string $productId;
+
+    protected ?ProductEntity $product = null;
 
     protected ?string $extraText = null;
 
@@ -57,6 +60,17 @@ class ProductExtraInfoEntity extends Entity
     public function setPriority(int $priority): ProductExtraInfoEntity
     {
         $this->priority = $priority;
+        return $this;
+    }
+
+    public function getProduct(): ?ProductEntity
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?ProductEntity $product): ProductExtraInfoEntity
+    {
+        $this->product = $product;
         return $this;
     }
 }

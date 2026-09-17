@@ -1,2 +1,2 @@
-// Import admin module
-import './module/swag-example';
+import './component/tb-product-extra-info';
+import './extension/sw-product-settings-form';

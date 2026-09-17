@@ -42,11 +42,11 @@ class ProductExtraInfoDefinition extends EntityDefinition
                 ->addFlags(new Required(), new PrimaryKey()),
             (new FkField('product_id', 'productId', ProductDefinition::class))
                 ->addFlags(new Required(), new SetNullOnDelete()),
-            new LongTextField('extra_text', 'extra_text'),
-            (new IntField('priority', 'priority'))
-                ->addFlags(new WriteProtected()),
+            new LongTextField('extra_text', 'extraText'),
+            (new IntField('priority', 'priority')),
             new BoolField('active', 'active'),
 
+            new ManyToOneAssociationField('product', 'product_id', ProductDefinition::class, 'id', false),
         ]);
     }
 }
