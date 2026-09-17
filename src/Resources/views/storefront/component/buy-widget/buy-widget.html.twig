@@ -1,0 +1,21 @@
+{% sw_extends '@Storefront/storefront/component/buy-widget/buy-widget.html.twig' %}
+
+{% block buy_widget %}
+    {{ parent() }}
+
+    {% set extraInfo = page.extensions.productExtraInfo ?? null %}
+
+    {% if extraInfo and extraInfo.extraText %}
+        <div class="product-extra-info card mt-4">
+            <div class="card-body">
+                <h2 class="h5 product-extra-info__title">
+                    Zusatzinfo
+                </h2>
+
+                <div class="product-extra-info__content">
+                    {{ extraInfo.extraText|nl2br }}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
