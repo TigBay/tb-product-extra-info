@@ -1,8 +1,8 @@
-import template from './sw-product-settings-form.html.twig';
+import template from './sw-product-detail-base.html.twig';
 
 const { Component } = Shopware;
 
-Component.override('sw-product-settings-form', {
+Component.override('sw-product-detail-base', {
     template,
 
     computed: {

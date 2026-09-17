@@ -1,8 +1,12 @@
 {
-    "swag-example": {
-        "general": {
-            "mainMenuItemGeneral": "My custom module",
-            "descriptionTextModule": "Manage this custom module here"
-        }
+    "tb-product-extra-info": {
+        "cardTitle": "Produkt-Zusatzinfo",
+        "extraTextLabel": "Zusatztext",
+        "extraTextPlaceholder": "Zum Beispiel Liefer-, Material- oder Verfügbarkeitshinweise",
+        "priorityLabel": "Priorität",
+        "saveButton": "Zusatzinfo speichern",
+        "saveSuccess": "Die Zusatzinfo wurde gespeichert.",
+        "saveError": "Die Zusatzinfo konnte nicht gespeichert werden.",
+        "loadError": "Die Zusatzinfo konnte nicht geladen werden."
     }
 }

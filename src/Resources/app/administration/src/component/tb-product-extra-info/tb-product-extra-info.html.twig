@@ -1,19 +1,19 @@
 <sw-card
-        title="Produkt-Zusatzinfo"
+        :title="$tc('tb-product-extra-info.cardTitle')"
         :is-loading="isLoading"
 >
     <mt-textarea
             v-if="extraInfo"
             v-model="extraInfo.extraText"
-            label="Zusatztext"
-            placeholder="Zum Beispiel Liefer-, Material- oder Verfügbarkeitshinweise"
+            :label="$tc('tb-product-extra-info.extraTextLabel')"
+            :placeholder="$tc('tb-product-extra-info.extraTextPlaceholder')"
             :disabled="disabled || isSaving"
     />
 
     <mt-number-field
             v-if="extraInfo"
             v-model="extraInfo.priority"
-            label="Priorität"
+            :label="$tc('tb-product-extra-info.priorityLabel')"
             :min="0"
             :step="1"
             :disabled="disabled || isSaving"
@@ -26,7 +26,7 @@
                 :is-loading="isSaving"
                 @click="saveExtraInfo"
         >
-            Zusatzinfo speichern
+            {{ $tc('tb-product-extra-info.saveButton') }}
         </mt-button>
     </template>
 </sw-card>
