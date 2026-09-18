@@ -2,6 +2,7 @@
 
 namespace Tb\Subscriber;
 
+use Psr\Log\LoggerInterface;
 use Shopware\Storefront\Page\Product\ProductPageLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Tb\Services\ProductExtraInfoService;
@@ -10,7 +11,8 @@ readonly class ProductPageSubscriber implements EventSubscriberInterface
 {
 
     public function __construct(
-        private ProductExtraInfoService $productExtraInfoService
+        private ProductExtraInfoService $productExtraInfoService,
+        private LoggerInterface $logger
     )
     {
 
@@ -29,13 +31,18 @@ readonly class ProductPageSubscriber implements EventSubscriberInterface
         $product = $event->getPage()->getProduct();
         $productId = $product->getId();
 
-        $extraInfo = $this->productExtraInfoService->getByProductId($productId, $event->getContext());
+        try {
+            $extraInfo = $this->productExtraInfoService->getByProductId($productId, $event->getContext());
 
-        if ($extraInfo === null && $product->getParentId() !== null) {
-            $extraInfo = $this->productExtraInfoService->getByProductId(
-                $product->getParentId(),
-                $event->getContext(),
-            );
+            if ($extraInfo === null && $product->getParentId() !== null) {
+                $extraInfo = $this->productExtraInfoService->getByProductId(
+                    $product->getParentId(),
+                    $event->getContext(),
+                );
+            }
+        }catch(\Throwable $exception){
+            $this->logger->error('TbProductExtraInfo - ProductPageSubscriber: ' . $exception->getMessage());
+            return;
         }
 
         if ($extraInfo === null || trim((string)$extraInfo->getExtraText()) === '') {
