@@ -29,7 +29,6 @@ bin/console theme:compile
 ## Technical Structure
 
 - `ProductExtraInfoDefinition`: DAL definition for the additional product information
-- `ProductExtraInfoTranslationDefinition`: Translations for the additional text
 - `ProductExtension`: 1:1 association between a product and its additional information
 - `ProductExtraInfoService`: Loads additional information by product ID
 - `ProductPageSubscriber`: Adds the additional information to the Storefront product detail page

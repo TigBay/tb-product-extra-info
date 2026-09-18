@@ -40,7 +40,7 @@ class ProductExtraInfoDefinition extends EntityDefinition
             (new IdField('id', 'id'))
                 ->addFlags(new Required(), new PrimaryKey()),
             (new FkField('product_id', 'productId', ProductDefinition::class))
-                ->addFlags(new Required(), new SetNullOnDelete()),
+                ->addFlags(new Required()),
             new LongTextField('extra_text', 'extraText'),
             (new IntField('priority', 'priority')),
             new BoolField('active', 'active'),

@@ -40,6 +40,7 @@ readonly class ProductExtraInfoService
                 ->first();
         } catch (Throwable $exception) {
             $this->logger->error('TbProductExtraInfo - ProductExtraInfoService ' . $exception->getMessage());
+            return null;
         }
 
         return $extraInfo;
