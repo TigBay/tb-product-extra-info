@@ -1,5 +1,30 @@
-/composer.lock
-/src/Resources/app/administration/node_modules/
-/src/Resources/app/administration/src/.vite
-/src/Resources/public/
-/vendor
+# Composer
+/vendor/
+
+# Public resources
+src/Resources/public
+
+# Node / Administration builds
+/node_modules/
+/.vite/
+/assets/
+
+# PHPUnit
+.phpunit.cache/
+.phpunit.result.cache
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+.env.local
+
+# Logs
+*.log
