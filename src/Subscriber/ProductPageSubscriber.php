@@ -6,13 +6,13 @@ use Psr\Log\LoggerInterface;
 use Shopware\Storefront\Page\Product\ProductPageLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Tb\Services\ProductExtraInfoService;
+use Throwable;
 
 readonly class ProductPageSubscriber implements EventSubscriberInterface
 {
-
     public function __construct(
         private ProductExtraInfoService $productExtraInfoService,
-        private LoggerInterface $logger
+        private LoggerInterface         $logger
     )
     {
 
@@ -40,7 +40,7 @@ readonly class ProductPageSubscriber implements EventSubscriberInterface
                     $event->getContext(),
                 );
             }
-        }catch(\Throwable $exception){
+        } catch (Throwable $exception) {
             $this->logger->error('TbProductExtraInfo - ProductPageSubscriber: ' . $exception->getMessage());
             return;
         }
