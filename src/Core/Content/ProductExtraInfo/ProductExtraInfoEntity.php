@@ -16,18 +16,17 @@ class ProductExtraInfoEntity extends Entity
 
     protected ?string $extraText = null;
 
-    protected bool $active;
-
-    protected int $priority;
+    protected int $priority = 0;
 
     public function getProductId(): string
     {
         return $this->productId;
     }
 
-    public function setProductId(string $productId): ProductExtraInfoEntity
+    public function setProductId(string $productId): self
     {
         $this->productId = $productId;
+
         return $this;
     }
 
@@ -36,20 +35,11 @@ class ProductExtraInfoEntity extends Entity
         return $this->extraText;
     }
 
-    public function setExtraText(?string $extraText): ProductExtraInfoEntity
+    public function setExtraText(?string $extraText): self
     {
         $this->extraText = $extraText;
+
         return $this;
-    }
-
-    public function isActive(): bool
-    {
-        return $this->active;
-    }
-
-    public function setActive(bool $active): void
-    {
-        $this->active = $active;
     }
 
     public function getPriority(): int
@@ -57,9 +47,10 @@ class ProductExtraInfoEntity extends Entity
         return $this->priority;
     }
 
-    public function setPriority(int $priority): ProductExtraInfoEntity
+    public function setPriority(int $priority): self
     {
         $this->priority = $priority;
+
         return $this;
     }
 
@@ -68,9 +59,10 @@ class ProductExtraInfoEntity extends Entity
         return $this->product;
     }
 
-    public function setProduct(?ProductEntity $product): ProductExtraInfoEntity
+    public function setProduct(?ProductEntity $product): self
     {
         $this->product = $product;
+
         return $this;
     }
 }

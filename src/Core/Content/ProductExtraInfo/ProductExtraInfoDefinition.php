@@ -4,11 +4,9 @@ namespace Tb\Core\Content\ProductExtraInfo;
 
 use Shopware\Core\Content\Product\ProductDefinition;
 use Shopware\Core\Framework\DataAbstractionLayer\EntityDefinition;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\BoolField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FkField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\PrimaryKey;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
-use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\SetNullOnDelete;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IntField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\LongTextField;
@@ -42,9 +40,7 @@ class ProductExtraInfoDefinition extends EntityDefinition
             (new FkField('product_id', 'productId', ProductDefinition::class))
                 ->addFlags(new Required()),
             new LongTextField('extra_text', 'extraText'),
-            (new IntField('priority', 'priority')),
-            new BoolField('active', 'active'),
-
+            new IntField('priority', 'priority'),
             new OneToOneAssociationField('product', 'product_id', 'id', ProductDefinition::class, false),
         ]);
     }

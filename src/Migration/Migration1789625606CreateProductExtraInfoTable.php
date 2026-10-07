@@ -19,7 +19,6 @@ class Migration1789625606CreateProductExtraInfoTable extends MigrationStep
                 `id` BINARY(16) NOT NULL,
                 `product_id` BINARY(16) NOT NULL,
                 `extra_text` LONGTEXT NULL,
-                `active` INT NOT NULL DEFAULT 0,
                 `priority` INT NOT NULL DEFAULT 0,
                 `created_at` DATETIME(3) NOT NULL,
                 `updated_at` DATETIME(3) NULL,
