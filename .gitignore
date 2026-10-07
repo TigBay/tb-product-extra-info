@@ -1,12 +1,10 @@
 # Composer
 /vendor/
 
-# Public resources
-src/Resources/public
-
 # Node / Administration builds
-/node_modules/
+node_modules/
 /.vite/
+src/Resources/app/administration/.tmp/
 /assets/
 
 # PHPUnit
