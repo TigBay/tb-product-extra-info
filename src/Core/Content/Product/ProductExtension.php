@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tb\Core\Content\Product;
 
@@ -12,7 +12,6 @@ use Tb\Core\Content\ProductExtraInfo\ProductExtraInfoDefinition;
 
 class ProductExtension extends EntityExtension
 {
-
     public function getEntityName(): string
     {
         return ProductDefinition::ENTITY_NAME;

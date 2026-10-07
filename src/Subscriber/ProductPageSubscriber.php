@@ -2,25 +2,19 @@
 
 namespace Tb\Subscriber;
 
-use Psr\Log\LoggerInterface;
 use Shopware\Storefront\Page\Product\ProductPageLoadedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Tb\Services\ProductExtraInfoService;
-use Throwable;
 
 readonly class ProductPageSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private ProductExtraInfoService $productExtraInfoService,
-        private LoggerInterface         $logger
-    )
-    {
-
+    ) {
     }
 
     public static function getSubscribedEvents(): array
     {
-        // Return the events to listen to as array like this:  <event to listen to> => <method to execute>
         return [
             ProductPageLoadedEvent::class => 'onProductPageLoaded',
         ];
@@ -29,29 +23,18 @@ readonly class ProductPageSubscriber implements EventSubscriberInterface
     public function onProductPageLoaded(ProductPageLoadedEvent $event): void
     {
         $product = $event->getPage()->getProduct();
-        $productId = $product->getId();
+        $context = $event->getContext();
 
-        try {
-            $extraInfo = $this->productExtraInfoService->getByProductId($productId, $event->getContext());
+        $extraInfo = $this->productExtraInfoService->getByProductId($product->getId(), $context);
 
-            if ($extraInfo === null && $product->getParentId() !== null) {
-                $extraInfo = $this->productExtraInfoService->getByProductId(
-                    $product->getParentId(),
-                    $event->getContext(),
-                );
-            }
-        } catch (Throwable $exception) {
-            $this->logger->error('TbProductExtraInfo - ProductPageSubscriber: ' . $exception->getMessage());
+        if ($extraInfo === null && $product->getParentId() !== null) {
+            $extraInfo = $this->productExtraInfoService->getByProductId($product->getParentId(), $context);
+        }
+
+        if ($extraInfo === null || trim((string) $extraInfo->getExtraText()) === '') {
             return;
         }
 
-        if ($extraInfo === null || trim((string)$extraInfo->getExtraText()) === '') {
-            return;
-        }
-
-        $event->getPage()->addExtension(
-            'productExtraInfo',
-            $extraInfo,
-        );
+        $event->getPage()->addExtension('productExtraInfo', $extraInfo);
     }
 }
