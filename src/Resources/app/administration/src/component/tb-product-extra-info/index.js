@@ -7,7 +7,6 @@ Component.register('tb-product-extra-info', {
 
     inject: [
         'repositoryFactory',
-        'syncService'
     ],
 
     mixins: [
@@ -31,8 +30,7 @@ Component.register('tb-product-extra-info', {
             extraInfo: null,
             isLoading: false,
             isSaving: false,
-            isPersisted: false,
-        };
+            };
     },
 
     computed: {
@@ -84,12 +82,12 @@ Component.register('tb-product-extra-info', {
                 }
             } catch (error) {
                 console.error(
-                    '[TbProductExtraInfo] Fehler beim Laden der Zusatzinfo',
+                    '[TbProductExtraInfo] Failed to load extra info',
                     error,
                 );
 
                 this.createNotificationError({
-                    message: 'Die Zusatzinfo konnte nicht geladen werden.',
+                    message: this.$tc('tb-product-extra-info.loadError'),
                 });
             } finally {
                 this.isLoading = false;
@@ -112,16 +110,16 @@ Component.register('tb-product-extra-info', {
                 await this.loadExtraInfo();
 
                 this.createNotificationSuccess({
-                    message: 'Die Zusatzinfo wurde gespeichert.',
+                    message: this.$tc('tb-product-extra-info.saveSuccess'),
                 });
             } catch (error) {
                 console.error(
-                    '[TbProductExtraInfo] Fehler beim Speichern der Zusatzinfo',
+                    '[TbProductExtraInfo] Failed to save extra info',
                     error,
                 );
 
                 this.createNotificationError({
-                    message: 'Die Zusatzinfo konnte nicht gespeichert werden.',
+                    message: this.$tc('tb-product-extra-info.saveError'),
                 });
             } finally {
                 this.isSaving = false;

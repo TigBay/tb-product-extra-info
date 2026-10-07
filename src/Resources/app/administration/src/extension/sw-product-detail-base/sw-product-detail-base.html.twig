@@ -2,7 +2,7 @@
     {% parent %}
 
     <tb-product-extra-info
-            v-if="product && product.id"
+            v-if="product && product.id && !product._isNew"
             :product-id="product.id"
     />
 {% endblock %}

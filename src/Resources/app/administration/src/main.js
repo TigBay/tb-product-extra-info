@@ -5,4 +5,4 @@ Shopware.Locale.extend('de-DE', deDE);
 Shopware.Locale.extend('en-GB', enGB);
 
 import './component/tb-product-extra-info';
-import './extension/sw-product-settings-form';
+import './extension/sw-product-detail-base';
