@@ -1,12 +1,7 @@
 <?php declare(strict_types=1);
 
-use Shopware\Core\TestBootstrapper;
+$projectDir = dirname(__DIR__, 4);
 
-$loader = (new TestBootstrapper())
-    ->addCallingPlugin()
-    ->addActivePlugins('TbProductExtraInfo')
-    ->setForceInstallPlugins(true)
-    ->bootstrap()
-    ->getClassLoader();
-
+$loader = require $projectDir . '/vendor/autoload.php';
+$loader->addPsr4('Tb\\', dirname(__DIR__) . '/src');
 $loader->addPsr4('Tb\\Tests\\', __DIR__);
