@@ -1,0 +1,23 @@
+{
+  "base": "/bundles/tbproductextrainfo/administration/",
+  "entryPoints": {
+    "tb-product-extra-info": {
+      "css": [],
+      "dynamic": [],
+      "js": [
+        "/bundles/tbproductextrainfo/administration/assets/tb-product-extra-info-lJB7TVva.js"
+      ],
+      "legacy": false,
+      "preload": []
+    }
+  },
+  "legacy": false,
+  "metadatas": {},
+  "version": [
+    "7.1.0",
+    7,
+    1,
+    0
+  ],
+  "viteServer": null
+}
