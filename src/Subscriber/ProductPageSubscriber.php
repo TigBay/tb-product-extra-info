@@ -10,8 +10,7 @@ readonly class ProductPageSubscriber implements EventSubscriberInterface
 {
     public function __construct(
         private ProductExtraInfoService $productExtraInfoService,
-    ) {
-    }
+    ) {}
 
     public static function getSubscribedEvents(): array
     {

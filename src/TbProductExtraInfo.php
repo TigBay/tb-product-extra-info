@@ -16,7 +16,9 @@ class TbProductExtraInfo extends Plugin
             return;
         }
 
-        $connection = $this->container->get(Connection::class);
+        $connection = $this->container?->get(Connection::class);
+        \assert($connection instanceof Connection);
+
         $connection->executeStatement('DROP TABLE IF EXISTS `product_extra_info`');
     }
 }

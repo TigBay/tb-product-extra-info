@@ -55,11 +55,11 @@ final class ProductExtraInfoServiceTest extends TestCase
         $logger = $this->createMock(LoggerInterface::class);
         $logger->expects(self::never())->method('error');
 
-        $result = (new ProductExtraInfoService($repository, $logger))->getByProductId(self::PRODUCT_ID, $this->context);
+        $result = new ProductExtraInfoService($repository, $logger)->getByProductId(self::PRODUCT_ID, $this->context);
 
         self::assertSame($extraInfo, $result);
-        self::assertSame('Zusatzinformation für das Testprodukt.', $result?->getExtraText());
-        self::assertSame(123, $result?->getPriority());
+        self::assertSame('Zusatzinformation für das Testprodukt.', $result->getExtraText());
+        self::assertSame(123, $result->getPriority());
     }
 
     public function testGetByProductIdReturnsNullWhenNoExtraInfoExists(): void
@@ -70,7 +70,7 @@ final class ProductExtraInfoServiceTest extends TestCase
         $logger = $this->createMock(LoggerInterface::class);
         $logger->expects(self::never())->method('error');
 
-        $result = (new ProductExtraInfoService($repository, $logger))->getByProductId(self::PRODUCT_ID, $this->context);
+        $result = new ProductExtraInfoService($repository, $logger)->getByProductId(self::PRODUCT_ID, $this->context);
 
         self::assertNull($result);
     }
@@ -94,7 +94,7 @@ final class ProductExtraInfoServiceTest extends TestCase
                 ]),
             );
 
-        $result = (new ProductExtraInfoService($repository, $logger))->getByProductId(self::PRODUCT_ID, $this->context);
+        $result = new ProductExtraInfoService($repository, $logger)->getByProductId(self::PRODUCT_ID, $this->context);
 
         self::assertNull($result);
     }

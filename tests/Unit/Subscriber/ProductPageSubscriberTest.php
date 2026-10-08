@@ -82,7 +82,10 @@ final class ProductPageSubscriberTest extends TestCase
                 $filter = $criteria->getFilters()[0];
                 \assert($filter instanceof EqualsFilter);
 
-                $extraInfo = $extraInfoByProductId[$filter->getValue()] ?? null;
+                $productId = $filter->getValue();
+                \assert(\is_string($productId));
+
+                $extraInfo = $extraInfoByProductId[$productId] ?? null;
                 $collection = new ProductExtraInfoCollection($extraInfo ? [$extraInfo] : []);
 
                 return new EntitySearchResult('product_extra_info', $collection->count(), $collection, null, $criteria, $context);

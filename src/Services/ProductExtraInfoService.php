@@ -21,8 +21,7 @@ readonly class ProductExtraInfoService
         #[Autowire(service: 'product_extra_info.repository')]
         private EntityRepository $productExtraInfoRepository,
         private LoggerInterface $logger,
-    ) {
-    }
+    ) {}
 
     public function getByProductId(string $productId, Context $context): ?ProductExtraInfoEntity
     {

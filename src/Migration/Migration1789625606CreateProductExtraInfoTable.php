@@ -32,7 +32,5 @@ class Migration1789625606CreateProductExtraInfoTable extends MigrationStep
         ');
     }
 
-    public function updateDestructive(Connection $connection): void
-    {
-    }
+    public function updateDestructive(Connection $connection): void {}
 }

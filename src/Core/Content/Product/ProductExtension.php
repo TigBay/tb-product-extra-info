@@ -20,13 +20,13 @@ class ProductExtension extends EntityExtension
     public function extendFields(FieldCollection $collection): void
     {
         $collection->add(
-            (new OneToOneAssociationField(
+            new OneToOneAssociationField(
                 'productExtraInfo',
                 'id',
                 'product_id',
                 ProductExtraInfoDefinition::class,
                 false
-            ))->addFlags(new Extension(), new CascadeDelete())
+            )->addFlags(new Extension(), new CascadeDelete())
         );
     }
 }

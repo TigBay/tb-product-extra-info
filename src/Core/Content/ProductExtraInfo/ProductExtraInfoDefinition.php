@@ -35,9 +35,9 @@ class ProductExtraInfoDefinition extends EntityDefinition
     protected function defineFields(): FieldCollection
     {
         return new FieldCollection([
-            (new IdField('id', 'id'))
+            new IdField('id', 'id')
                 ->addFlags(new Required(), new PrimaryKey()),
-            (new FkField('product_id', 'productId', ProductDefinition::class))
+            new FkField('product_id', 'productId', ProductDefinition::class)
                 ->addFlags(new Required()),
             new LongTextField('extra_text', 'extraText'),
             new IntField('priority', 'priority'),
