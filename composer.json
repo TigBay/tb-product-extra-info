@@ -10,9 +10,15 @@
         }
     ],
     "require": {
+        "php": "~8.4.0 || ~8.5.0",
         "shopware/core": "~6.7.0",
         "shopware/storefront": "~6.7.0",
         "shopware/administration": "~6.7.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.5"
     },
     "extra": {
         "shopware-plugin-class": "Tb\\TbProductExtraInfo",
@@ -33,6 +39,12 @@
     "autoload-dev": {
         "psr-4": {
             "Tb\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": false,
+            "symfony/runtime": false
         }
     }
 }

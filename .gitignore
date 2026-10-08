@@ -1,5 +1,6 @@
 # Composer
 /vendor/
+/composer.lock
 
 # Node / Administration builds
 node_modules/
@@ -10,6 +11,9 @@ src/Resources/app/administration/.tmp/
 # PHPUnit
 .phpunit.cache/
 .phpunit.result.cache
+
+# PHP-CS-Fixer
+.php-cs-fixer.cache
 
 # IDE
 .idea/

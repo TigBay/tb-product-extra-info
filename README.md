@@ -1,5 +1,7 @@
 # TbProductExtraInfo
 
+[![CI](https://github.com/TigBay/tb-product-extra-info/actions/workflows/ci.yml/badge.svg)](https://github.com/TigBay/tb-product-extra-info/actions/workflows/ci.yml)
+
 Shopware 6 plugin for maintaining additional information per product (e.g. internal notes, marketing texts or stock hints) in the Administration and showing it on the Storefront product detail page.
 
 ## Features
@@ -13,6 +15,7 @@ Shopware 6 plugin for maintaining additional information per product (e.g. inter
 ## Requirements
 
 - Shopware 6.7
+- PHP 8.4 or 8.5
 
 ## Installation
 
@@ -53,12 +56,22 @@ The card is only shown for products that have already been saved once.
 | Storefront | `Resources/views/storefront/component/buy-widget/buy-widget.html.twig` | Twig inheritance of the buy widget |
 | Administration | `Resources/app/administration/src` | Component `tb-product-extra-info` and override of `sw-product-detail-base` |
 
-## Tests
+## Tests and static analysis
 
 The unit tests cover the service and the subscriber and don't need a database. Run them from the shop root:
 
 ```bash
 ./vendor/bin/phpunit -c custom/plugins/TbProductExtraInfo/phpunit.xml
+```
+
+GitHub Actions runs `composer validate`, PHP-CS-Fixer (PER-CS 3.0), PHPStan (level `max`) and PHPUnit on PHP 8.4 and 8.5 for every push and pull request. In CI the plugin is checked standalone: `composer install` inside the plugin pulls Shopware as a dependency, and `tests/TestBootstrap.php` falls back to the plugin's own autoloader. To run the same checks locally:
+
+```bash
+cd custom/plugins/TbProductExtraInfo
+composer install
+vendor/bin/php-cs-fixer check
+vendor/bin/phpstan analyse
+vendor/bin/phpunit
 ```
 
 ## Notes
@@ -68,4 +81,4 @@ The unit tests cover the service and the subscriber and don't need a database. R
 
 ## License
 
-MIT
+MIT, see [LICENSE](LICENSE).
